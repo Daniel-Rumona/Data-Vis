@@ -228,7 +228,7 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
                     "textOutline": "3px contrast"
                 }
             },
-            "center": ["40%", "80%"],
+            "center": ["50%", "70%"],
             "size": "100%",
             "startAngle": -100,
             "endAngle": 100
