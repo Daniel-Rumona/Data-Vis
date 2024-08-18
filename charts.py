@@ -131,7 +131,7 @@ def create_highcharts_pie_chart(df, loc, keyword, title="Score Analysis"):
                 "showInLegend": True,
                 "startAngle": -90,
                 "endAngle": 90,
-                "center": ['50%', '65%'],
+                "center": ['40%', '65%'],
                 "size": '110%'
             }
         },
@@ -228,7 +228,7 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
                     "textOutline": "3px contrast"
                 }
             },
-            "center": ["50%", "80%"],
+            "center": ["40%", "80%"],
             "size": "100%",
             "startAngle": -100,
             "endAngle": 100
