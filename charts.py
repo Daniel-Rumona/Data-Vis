@@ -192,7 +192,7 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
         main_sector_short_name = short_names.get(main_sector_name, main_sector_name)
 
         # Append the data to the list, using the short name as the shorthand label
-        data.append([main_sector_short_name, row[type], None, main_sector_short_name])
+        data.append([main_sector_name, row[type], None, main_sector_short_name])
     # Highcharts configuration
     highcharts_config = {
         "chart": {
