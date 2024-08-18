@@ -206,7 +206,7 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
             "text": subtitle if subtitle else f'{location}.'
         },
         "legend": {
-            "labelFormat": '{name} <span style="opacity: 0.6">{y}</span>',
+            "labelFormat": '{name}',
             'x': 30,
             "layout": "horizontal",  # Arrange legend items vertically
             # "align": "bottom",  # Align the legend to the right of the chart
@@ -228,7 +228,7 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
                 }
             },
             "center": ["50%", "80%"],
-            "size": "115%",
+            "size": "100%",
             "startAngle": -100,
             "endAngle": 100
         }],
