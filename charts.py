@@ -181,7 +181,8 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
         'Other': 'Other',
         'Tourism': 'Tourism',
         'Trade': 'Trade',
-        'Transport': 'Trans'
+        'Transport': 'Trans',
+        'Community': 'Com'
     }
 
     for _, row in grouped_df.iterrows():
