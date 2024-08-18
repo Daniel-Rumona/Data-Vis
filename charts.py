@@ -70,7 +70,7 @@ def get_filtered_avg(df, keyword):
     return result_df
 
 
-def create_highcharts_pie_chart(df, loc, keyword, title="Impact Analysis"):
+def create_highcharts_pie_chart(df, loc, keyword, title="Score Analysis"):
     # Filter data for the selected location
     locdf = df[df['Hub'] == loc]
 
@@ -100,19 +100,19 @@ def create_highcharts_pie_chart(df, loc, keyword, title="Impact Analysis"):
         "title": {
             "text": title,
             "align": "center",
-            "verticalAlign": "top",  # Align title at the top
-            "y": 15,  # Move the title slightly upwards
+            "verticalAlign": "top",
+            "y": 15,
             "style": {
-                "fontSize": "1.5em",  # Adjust font size for better visibility
-                "fontWeight": "bold"  # Make the title bold
+                "fontSize": "1.5em",
+                "fontWeight": "bold"
             }
         },
         "tooltip": {
-            "pointFormat": '{series.name}: <b>{point.percentage:.1f}%</b>'
+            "pointFormat": '{series.name}: <b>{point.y:.2f}</b>'  # Show actual score with two decimal places
         },
         "accessibility": {
             "point": {
-                "valueSuffix": '%'
+                "valueSuffix": ''
             }
         },
         "plotOptions": {
@@ -121,8 +121,8 @@ def create_highcharts_pie_chart(df, loc, keyword, title="Impact Analysis"):
                 "cursor": "pointer",
                 "dataLabels": {
                     "enabled": True,
-                    "distance": -50,  # Distance of the label from the center
-                    "format": '{point.percentage:.1f}%',  # Display percentage
+                    "distance": -50,
+                    "format": '{point.y:.2f}',  # Show actual score with two decimal places
                     "style": {
                         "fontWeight": "bold",
                         "color": "white"
@@ -131,7 +131,7 @@ def create_highcharts_pie_chart(df, loc, keyword, title="Impact Analysis"):
                 "showInLegend": True,
                 "startAngle": -90,
                 "endAngle": 90,
-                "center": ['50%', '65%'],  # Move the pie chart down slightly
+                "center": ['50%', '65%'],
                 "size": '110%'
             }
         },
@@ -143,14 +143,9 @@ def create_highcharts_pie_chart(df, loc, keyword, title="Impact Analysis"):
         }],
         "legend": {
             'labelFormat': '{name}',
-            "align": "center",  # Align the legend horizontally
-            "verticalAlign": "middle",  # Align the legend at the bottom
+            "align": "center",
+            "verticalAlign": "middle",
             'y': 200
-            # "layout": "horizontal",  # Layout the legend horizontally
-            # "itemStyle": {
-            #     "fontSize": "12px",  # Adjust the font size for the legend
-            #     "fontWeight": "normal"
-            # }
         }
     }
 
@@ -166,7 +161,6 @@ def create_highcharts_pie_chart(df, loc, keyword, title="Impact Analysis"):
         height=600,
     )
 
-
 def create_highcharts_item_chart_unique(df, location, type, title="Main Sector Frequency Distribution", subtitle=""):
     if type.find("Frequency") != -1:
         type = "Frequency"
@@ -178,7 +172,7 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
     # Prepare the data
     data = []
     for _, row in grouped_df.iterrows():
-        main_sector_name = row['Main Sector']
+        main_sector_name = row['Main Sector'].split()[0].replace(',','')
         # Create shorthand label by taking the first letter of each word in the main sector name
         shorthand_label = ''.join([word[0].upper() for word in main_sector_name.split()])
         data.append([main_sector_name, row[type], None, shorthand_label])
@@ -193,7 +187,7 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
             "text": title
         },
         "subtitle": {
-            "text": subtitle if subtitle else f'{location}. Source: Provided Dataset'
+            "text": subtitle if subtitle else f'{location}.'
         },
         "legend": {
             "labelFormat": '{name} <span style="opacity: 0.6">{y}</span>',
@@ -218,7 +212,7 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
                 }
             },
             "center": ["50%", "80%"],
-            "size": "125%",
+            "size": "115%",
             "startAngle": -100,
             "endAngle": 100
         }],
