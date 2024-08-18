@@ -161,6 +161,7 @@ def create_highcharts_pie_chart(df, loc, keyword, title="Score Analysis"):
         height=600,
     )
 
+
 def create_highcharts_item_chart_unique(df, location, type, title="Main Sector Frequency Distribution", subtitle=""):
     if type.find("Frequency") != -1:
         type = "Frequency"
@@ -171,8 +172,20 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
 
     # Prepare the data
     data = []
+    short_names = {
+        'Agriculture': 'Agric',
+        'Construction': 'Constr',
+        'Finance': 'Fin',
+        'Manufacturing': 'Manuf',
+        'Mining': 'Mining',
+        'Other': 'Other',
+        'Tourism': 'Tourism',
+        'Trade': 'Trade',
+        'Transport': 'Transp'
+    }
+
     for _, row in grouped_df.iterrows():
-        main_sector_name = row['Main Sector'].split()[0].replace(',','')
+        main_sector_name = row['Main Sector'].split()[0].replace(',', '')
         # Create shorthand label by taking the first letter of each word in the main sector name
         shorthand_label = ''.join([word[0].upper() for word in main_sector_name.split()])
         data.append([main_sector_name, row[type], None, shorthand_label])
