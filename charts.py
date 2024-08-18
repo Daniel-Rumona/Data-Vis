@@ -176,20 +176,23 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
         'Agriculture': 'Agric',
         'Construction': 'Constr',
         'Finance': 'Fin',
-        'Manufacturing': 'Manuf',
-        'Mining': 'Mining',
+        'Manufacturing': 'Man',
+        'Mining': 'Min',
         'Other': 'Other',
         'Tourism': 'Tourism',
         'Trade': 'Trade',
-        'Transport': 'Transp'
+        'Transport': 'Trans'
     }
 
     for _, row in grouped_df.iterrows():
+        # Get the main sector name and remove any commas
         main_sector_name = row['Main Sector'].split()[0].replace(',', '')
-        # Create shorthand label by taking the first letter of each word in the main sector name
-        shorthand_label = ''.join([word[0].upper() for word in main_sector_name.split()])
-        data.append([main_sector_name, row[type], None, shorthand_label])
 
+        # Use the short name from the dictionary if it exists, otherwise use the original name
+        main_sector_short_name = short_names.get(main_sector_name, main_sector_name)
+
+        # Append the data to the list, using the short name as the shorthand label
+        data.append([main_sector_short_name, row[type], None, main_sector_short_name])
     # Highcharts configuration
     highcharts_config = {
         "chart": {
