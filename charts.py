@@ -174,7 +174,7 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
     data = []
     short_names = {
         'Agriculture': 'Agric',
-        'Construction': 'Constr',
+        'Construction': 'Con',
         'Finance': 'Fin',
         'Manufacturing': 'Man',
         'Mining': 'Min',
