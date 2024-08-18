@@ -269,4 +269,4 @@ with analysisTypeColumn:
     )), label='Select Option')
 keyword = 'Technology'  # You can choose 'Support' or 'Others' as well
 create_highcharts_pie_chart(survey_df, analysisTargetLocation, analysisType,
-                            title=f"{analysisType} Impact in {analysisTargetLocation}")
+                            title=f"Average Score Of {analysisType} in {analysisTargetLocation}")
