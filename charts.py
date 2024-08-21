@@ -227,6 +227,7 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
                 "enabled": True,
                 "format": '{point.label}',
                 "style": {
+                    "color": "black",  # Set the label color to black
                     "textOutline": "3px contrast"
                 }
             },
