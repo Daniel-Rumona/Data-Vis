@@ -125,7 +125,8 @@ def create_highcharts_pie_chart(df, loc, keyword, title="Score Analysis"):
                     "format": '{point.y:.2f}',  # Show actual score with two decimal places
                     "style": {
                         "fontWeight": "bold",
-                        "color": "white"
+                        "color": "black",
+                        'textOutline': "none"
                     }
                 },
                 "showInLegend": True,
@@ -227,8 +228,8 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
                 "enabled": True,
                 "format": '{point.label}',
                 "style": {
-                    "color": "black",  # Set the label color to black
-                    "textOutline": "3px contrast"
+                    "color": "Black",  # Set the label color to black
+                    "textOutline": "3px"
                 }
             },
             "center": ["50%", "70%"],
@@ -244,7 +245,9 @@ def create_highcharts_item_chart_unique(df, location, type, title="Main Sector F
                 "chartOptions": {
                     "series": [{
                         "dataLabels": {
-                            "distance": -40
+                            "color": "black",  # Set the label color to black
+                            "textColor": "black",  # Set the label color to black
+                            "distance": -0
                         }
                     }]
                 }
